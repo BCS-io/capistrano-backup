@@ -4,9 +4,9 @@ module Capistrano
 
       # error helpers
 
-      def check_backup_folder_exists_error
+      def check_backup_file_exists_error
         puts
-        puts "Error - '#{fetch(:backup_local_path)}' folder does not exists, and it's required."
+        puts "Error - '#{fetch(:backup_local_file)}' does not exists, and it's required."
         puts
       end
 

@@ -29,6 +29,7 @@ namespace :backup do
       # all setups create path just in case they are the first called
       execute :mkdir, "-pv", File.dirname(backup_remote_file)
 
+      sudo "ln -nfs #{File.dirname(backup_remote_file)} #{File.dirname(backup_model_file)}", recursive: true
       upload! backup_local_file.to_s, backup_remote_file.to_s
       sudo "ln -nfs #{backup_remote_file} #{backup_model_file}"
     end

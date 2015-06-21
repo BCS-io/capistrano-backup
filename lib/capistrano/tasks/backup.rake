@@ -26,6 +26,9 @@ namespace :backup do
   desc "Setup `backup` folder on the server(s)"
   task setup: [:check] do
     on release_roles :all do
+      # all setups create path just in case they are the first called
+      execute :mkdir, "-pv", File.dirname(backup_remote_file)
+
       upload! backup_local_file.to_s, backup_remote_file.to_s
       sudo "ln -nfs #{backup_remote_file} #{backup_model_file}"
     end

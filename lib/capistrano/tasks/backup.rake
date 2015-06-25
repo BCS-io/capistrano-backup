@@ -23,20 +23,19 @@ namespace :backup do
     exit 1
   end
 
-  desc "Setup `backup` folder on the server(s)"
+  desc 'Setup `backup` folder on the server(s)'
   task setup: [:check] do
     on release_roles :all do
-      # all setups create path just in case they are the first called
       execute :mkdir, "-pv", File.dirname(backup_remote_file)
-
       sudo "ln -nfs #{File.dirname(backup_remote_file)} #{File.dirname(backup_model_file)}", recursive: true
+
       upload! backup_local_file.to_s, backup_remote_file.to_s
       sudo "ln -nfs #{backup_remote_file} #{backup_model_file}"
     end
   end
 
-  # Update `linked_files` after the deploy starts so that users'
-  # `backup_remote_file` override is respected.
+  # Update 'linked_files' after the deploy starts so that users
+  # 'backup_remote_file' override is respected.
   task :backup_symlink do
     set :linked_files, fetch(:linked_files, []).push(fetch(:backup_remote_file))
   end

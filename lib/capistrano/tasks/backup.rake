@@ -4,8 +4,8 @@ include Capistrano::Backup::Helpers
 namespace :load do task :defaults do
     set :backup_local_file, 'config/backup.rb'
     set :backup_remote_file, 'config/backup.rb'
-    set :backup_model_file, "~/Backup/models/my_backup.rb"
-    set :backup_env, -> { fetch(:rails_env) || fetch(:stage) }
+    set :backup_main_configuration, '~/Backup/config.rb'
+    set :backup_model_file, -> { backup_model_file }
   end
 end
 
@@ -14,6 +14,7 @@ namespace :backup do
   desc 'backup folder checks'
   task :check do
     invoke 'backup:check_backup_folder_exists'
+    invoke 'backup:check_backup_main_configuration'
   end
 
   task :check_backup_folder_exists do
@@ -21,6 +22,15 @@ namespace :backup do
 
     check_backup_file_exists_error
     exit 1
+  end
+
+  task :check_backup_main_configuration do
+    on release_roles :all do
+      next if test("[ -f #{backup_main_configuration} ]")
+
+      check_backup_main_configuration_error
+      exit 1
+    end
   end
 
   desc 'Setup `backup` folder on the server(s)'

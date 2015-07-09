@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Backup	lib/capistrano/backup/helpers.rb	/^  module Backup$/;"	m	class:Capistrano
+Backup	lib/capistrano/backup/paths.rb	/^  module Backup$/;"	m	class:Capistrano
+Backup	lib/capistrano/backup/version.rb	/^  module Backup$/;"	m	class:Capistrano
+Capistrano	lib/capistrano/backup/helpers.rb	/^module Capistrano$/;"	m
+Capistrano	lib/capistrano/backup/paths.rb	/^module Capistrano$/;"	m
+Capistrano	lib/capistrano/backup/version.rb	/^module Capistrano$/;"	m
+Helpers	lib/capistrano/backup/helpers.rb	/^    module Helpers$/;"	m	class:Capistrano.Backup
+Paths	lib/capistrano/backup/paths.rb	/^    module Paths$/;"	m	class:Capistrano.Backup
+backup_config_full_path	lib/capistrano/backup/paths.rb	/^      def backup_config_full_path$/;"	f	class:Capistrano.Backup.Paths
+backup_local_file	lib/capistrano/backup/paths.rb	/^      def backup_local_file$/;"	f	class:Capistrano.Backup.Paths
+backup_model_full_path	lib/capistrano/backup/paths.rb	/^      def backup_model_full_path$/;"	f	class:Capistrano.Backup.Paths
+backup_remote_file	lib/capistrano/backup/paths.rb	/^      def backup_remote_file$/;"	f	class:Capistrano.Backup.Paths
+check_backup_config_full_path_error	lib/capistrano/backup/helpers.rb	/^      def check_backup_config_full_path_error$/;"	f	class:Capistrano.Backup.Helpers
+check_backup_file_exists_error	lib/capistrano/backup/helpers.rb	/^      def check_backup_file_exists_error$/;"	f	class:Capistrano.Backup.Helpers

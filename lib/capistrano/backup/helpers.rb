@@ -10,9 +10,9 @@ module Capistrano
         puts
       end
 
-      def check_backup_main_configuration_error
+      def check_backup_config_full_path_error
         puts
-        puts "Error - remote file #{fetch(:backup_main_configuration)}' does not exist, and it's required"
+        puts "Error - remote file #{fetch(:backup_config_full_path)}' does not exist, and it's required"
         puts
       end
     end

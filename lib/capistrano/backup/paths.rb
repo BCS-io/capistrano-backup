@@ -15,9 +15,12 @@ module Capistrano
       #
       #  ~/-- apps/<application>/shared/config/backup.rb  => backup_remote_file
       #    \
-      #     - Backups - config.rb => backup_main_configuration
-      #               \
-      #                models - my_backup =>  backup_model_file
+      #     - Backups -\                       => backup_folder
+      #               | \
+      #               |  \ config.rb           => backup_config_full_path
+      #                \
+      #                 models - my_backup     => backup_model_file
+      #                                        => backup_model_full_path
       #
       # backup_remote_file
       #  - backup configuration path when deployed to the remote project
@@ -30,15 +33,15 @@ module Capistrano
       #  - main remote configuration file
       #    - when backup runs this is the first file that is loaded
       #
-      def backup_main_configuration
-        fetch(:backup_main_configuration)
+      def backup_config_full_path
+        "#{fetch(:backup_folder)}/config.rb"
       end
 
-      # backup_model_file
-      #  - remote configuration file which describes the backup procedure
+      # backup_model_full_path
+      #  - full path to the remote backup model file
       #
-      def backup_model_file
-        "#{fetch(:backup_root)}/models/my_backup.rb"
+      def backup_model_full_path
+        "#{fetch(:backup_folder)}/models/#{fetch(:backup_model_file)}"
       end
     end
   end

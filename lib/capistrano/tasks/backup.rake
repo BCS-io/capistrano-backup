@@ -9,7 +9,6 @@ namespace :load do
     set :backups_root,             -> { '~/Backup' }
     set :backups_config,           -> { 'config.rb' }
     set :backups_model_config,     -> { "#{fetch(:application)}.rb" }
-    set :backup_model_full_path,  -> { backup_model_full_path }
   end
 end
 
@@ -43,7 +42,7 @@ namespace :backup do
 
       # symlink app model file into backup directory
       upload! backup_local_file.to_s, app_config.to_s
-      sudo "ln -nfs #{app_config} #{backup_model_full_path}"
+      sudo "ln -nfs #{app_config} #{backups_model_config}"
     end
   end
 

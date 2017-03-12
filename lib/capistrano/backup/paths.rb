@@ -28,7 +28,6 @@ module Capistrano
       #               |  \ config.rb           => backups_config
       #                \
       #                 models - my_backup     => backups_model_config
-      #                                        => backup_model_full_path
       #
       # app_config
       #  - backup configuration path when deployed to the remote project
@@ -49,10 +48,10 @@ module Capistrano
         "#{backups_root}/#{fetch(:backups_config)}"
       end
 
-      # backup_model_full_path
+      # backups_model_config
       #  - full path to the remote backup model file
       #
-      def backup_model_full_path
+      def backups_model_config
         "#{backups_root}/models/#{fetch(:backups_model_config)}"
       end
     end

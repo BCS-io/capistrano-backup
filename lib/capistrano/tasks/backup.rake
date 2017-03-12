@@ -8,7 +8,7 @@ namespace :load do
 
     set :backups_root,             -> { '~/Backup' }
     set :backups_config,           -> { 'config.rb' }
-    set :backup_model_file,       -> { 'my_backup.rb' }
+    set :backups_model_config,     -> { "#{fetch(:application)}.rb" }
     set :backup_model_full_path,  -> { backup_model_full_path }
   end
 end

@@ -1,11 +1,12 @@
 include Capistrano::Backup::Paths
 include Capistrano::Backup::Helpers
 
-namespace :load do task :defaults do
+namespace :load do
+  task :defaults do
     set :backup_local_file, 'config/backup.rb'
     set :backup_remote_file, 'config/backup.rb'
 
-    set :backup_folder,           -> { '~/Backup'}
+    set :backup_folder,           -> { '~/Backup' }
     set :backup_config_full_path, -> { backup_config_full_path }
     set :backup_model_file,       -> { 'my_backup.rb' }
     set :backup_model_full_path,  -> { backup_model_full_path }
@@ -13,7 +14,6 @@ namespace :load do task :defaults do
 end
 
 namespace :backup do
-
   desc 'backup folder checks'
   task :check do
     invoke 'backup:check_backup_folder_exists'
@@ -21,7 +21,7 @@ namespace :backup do
   end
 
   task :check_backup_folder_exists do
-    next if File.exists?(backup_local_file)
+    next if File.exist?(backup_local_file)
 
     check_backup_file_exists_error
     exit 1
@@ -53,7 +53,6 @@ namespace :backup do
     set :linked_files, fetch(:linked_files, []).push(fetch(:backup_remote_file))
   end
   after 'deploy:started', 'backup:backup_symlink'
-
 end
 
 desc 'Server setup tasks'

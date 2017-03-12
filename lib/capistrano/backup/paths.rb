@@ -2,8 +2,10 @@ require 'pathname'
 
 module Capistrano
   module Backup
+    # Paths
+    #  - the directories and files used in the gem
+    #
     module Paths
-
       # Local file structure
       #
       # application-root/config/backup.rb  => backup_local_file

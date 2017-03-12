@@ -1,7 +1,10 @@
 module Capistrano
   module Backup
+    # Helpers
+    #  - embarrassingly I just copied the structure of other Capistrano gems
+    #  - In my mind it is "Wrap ugly parts of none OO code"
+    #
     module Helpers
-
       # error helpers - output error messages
 
       def check_backup_file_exists_error

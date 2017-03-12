@@ -6,7 +6,7 @@ namespace :load do
     set :backup_local_file, 'config/backup.rb'
     set :app_config,        'config/backup.rb'
 
-    set :backup_folder,           -> { '~/Backup' }
+    set :backups_folder,          -> { '~/Backup' }
     set :backup_config_full_path, -> { backup_config_full_path }
     set :backup_model_file,       -> { 'my_backup.rb' }
     set :backup_model_full_path,  -> { backup_model_full_path }

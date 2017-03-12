@@ -23,7 +23,7 @@ module Capistrano
       #
       #  ~/-- apps/<application>/shared/config/backup.rb  => app_config
       #    \
-      #     - Backups -\                       => backup_folder  ====> backups_folder
+      #     - Backups -\                       => backups_folder
       #               | \
       #               |  \ config.rb           => backup_config_full_path  ===> backups_config
       #                \
@@ -42,14 +42,14 @@ module Capistrano
       #    - when backup runs this is the first file that is loaded
       #
       def backup_config_full_path
-        "#{fetch(:backup_folder)}/config.rb"
+        "#{fetch(:backups_folder)}/config.rb"
       end
 
       # backup_model_full_path
       #  - full path to the remote backup model file
       #
       def backup_model_full_path
-        "#{fetch(:backup_folder)}/models/#{fetch(:backup_model_file)}"
+        "#{fetch(:backups_folder)}/models/#{fetch(:backup_model_file)}"
       end
     end
   end

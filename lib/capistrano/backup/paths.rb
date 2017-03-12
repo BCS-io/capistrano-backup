@@ -21,13 +21,13 @@ module Capistrano
 
       # Remote file structure
       #
-      #  ~/-- apps/<application>/shared/config/backup.rb  => backup_remote_file
+      #  ~/-- apps/<application>/shared/config/backup.rb  => backup_remote_file ====> app_config
       #    \
-      #     - Backups -\                       => backup_folder
+      #     - Backups -\                       => backup_folder  ====> backups_folder
       #               | \
-      #               |  \ config.rb           => backup_config_full_path
+      #               |  \ config.rb           => backup_config_full_path  ===> backups_config
       #                \
-      #                 models - my_backup     => backup_model_file
+      #                 models - my_backup     => backup_model_file       ====> model_config
       #                                        => backup_model_full_path
       #
       # backup_remote_file

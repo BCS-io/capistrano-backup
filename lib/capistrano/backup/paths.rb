@@ -25,7 +25,7 @@ module Capistrano
       #    \
       #     - Backups -\                       => backups_root
       #               | \
-      #               |  \ config.rb           => backup_config_full_path  ===> backups_config
+      #               |  \ config.rb           => backups_config
       #                \
       #                 models - my_backup     => backup_model_file       ====> model_config
       #                                        => backup_model_full_path
@@ -41,12 +41,12 @@ module Capistrano
         fetch(:backups_root)
       end
 
-      # backup_main_configuration
+      # backups_config
       #  - main remote configuration file
       #    - when backup runs this is the first file that is loaded
       #
-      def backup_config_full_path
-        "#{backups_root}/config.rb"
+      def backups_config
+        "#{backups_root}/#{fetch(:backups_config)}"
       end
 
       # backup_model_full_path

@@ -7,7 +7,7 @@ namespace :load do
     set :app_config,        'config/backup.rb'
 
     set :backups_root,             -> { '~/Backup' }
-    set :backup_config_full_path, -> { backup_config_full_path }
+    set :backups_config,           -> { 'config.rb' }
     set :backup_model_file,       -> { 'my_backup.rb' }
     set :backup_model_full_path,  -> { backup_model_full_path }
   end
@@ -29,7 +29,7 @@ namespace :backup do
 
   task :check_backup_config_full_path do
     on release_roles :all do
-      next if test("[ -f #{backup_config_full_path} ]")
+      next if test("[ -f #{backups_config} ]")
 
       check_backup_config_full_path_error
       exit 1

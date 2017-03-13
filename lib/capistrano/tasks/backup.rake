@@ -3,11 +3,10 @@ include Capistrano::Backup::Helpers
 
 namespace :load do
   task :defaults do
-    set :backup_local_file, 'config/backup.rb'
-    set :app_config,        'config/backup.rb'
+    set :app_config,               -> { 'backup.rb' } # name of app config file local & remote
 
-    set :backups_root,             -> { '~/Backup' }
-    set :backups_config,           -> { 'config.rb' }
+    set :backups_root,             -> { '~/Backup' }  # backup configuration under this
+    set :backups_config,           -> { 'config.rb' } # name of backup config file
     set :backups_model_config,     -> { "#{fetch(:application)}.rb" }
   end
 end

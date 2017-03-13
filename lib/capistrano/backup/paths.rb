@@ -8,7 +8,7 @@ module Capistrano
     module Paths
       # Local file structure
       #
-      # application-root/config/backup.rb  => backup_local_file
+      # root / config / backup.rb  => backup_local_file
       #
       #
       # backup_local_file
@@ -16,7 +16,7 @@ module Capistrano
       #  - file kept on the machine running the deployment
       #
       def backup_local_file
-        Pathname.new fetch(:backup_local_file)
+        Pathname.new('config').join fetch(:app_config)
       end
 
       # Remote file structure
@@ -33,11 +33,11 @@ module Capistrano
       #  - backup configuration path when deployed to the remote project
       #
       def app_config
-        shared_path.join fetch(:app_config)
+        shared_path.join 'config', fetch(:app_config)
       end
 
       def backups_root
-        fetch(:backups_root)
+        Pathname.new fetch(:backups_root)
       end
 
       # backups_config
@@ -45,14 +45,14 @@ module Capistrano
       #    - when backup runs this is the first file that is loaded
       #
       def backups_config
-        "#{backups_root}/#{fetch(:backups_config)}"
+        backups_root.join fetch(:backups_config)
       end
 
       # backups_model_config
       #  - full path to the remote backup model file
       #
       def backups_model_config
-        "#{backups_root}/models/#{fetch(:backups_model_config)}"
+        backups_root.join 'models', fetch(:backups_model_config)
       end
     end
   end

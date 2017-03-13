@@ -7,9 +7,9 @@ module Capistrano
     module Helpers
       # error helpers - output error messages
 
-      def check_backup_file_exists_error
+      def local_config_missing
         puts
-        puts "Error - local file '#{fetch(:backup_local_file)}' does not exist, and it's required."
+        puts "Error - local file '#{backup_local_file}' is missing, and it is required."
         puts
       end
 

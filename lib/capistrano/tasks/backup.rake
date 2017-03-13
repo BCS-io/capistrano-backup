@@ -14,14 +14,14 @@ end
 namespace :backup do
   desc 'backup folder checks'
   task :check do
-    invoke 'backup:check_backup_folder_exists'
+    invoke 'backup:local_config_exists?'
     invoke 'backup:check_backup_config_full_path'
   end
 
-  task :check_backup_folder_exists do
+  task :local_config_exists? do
     next if File.exist?(backup_local_file)
 
-    check_backup_file_exists_error
+    local_config_missing
     exit 1
   end
 

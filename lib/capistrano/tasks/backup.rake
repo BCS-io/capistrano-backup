@@ -34,7 +34,7 @@ namespace :backup do
     end
   end
 
-  desc 'Setup `backup` folder on the server(s)'
+  desc 'Copy `backup` config to the remote server(s) and symlink to it from backups folder'
   task setup: [:check] do
     on release_roles :all do
       execute :mkdir, '-pv', File.dirname(app_config)

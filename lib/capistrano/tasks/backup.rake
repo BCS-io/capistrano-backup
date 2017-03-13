@@ -19,9 +19,9 @@ namespace :backup do
   end
 
   task :local_config_exists? do
-    next if File.exist?(backup_local_file)
+    next if File.exist?(local_app_config)
 
-    local_config_missing
+    local_app_config_missing
     exit 1
   end
 
@@ -40,7 +40,7 @@ namespace :backup do
       execute :mkdir, '-pv', File.dirname(app_config)
 
       # symlink app model file into backup directory
-      upload! backup_local_file.to_s, app_config.to_s
+      upload! local_app_config.to_s, app_config.to_s
       sudo "ln -nfs #{app_config} #{backups_model_config}"
     end
   end

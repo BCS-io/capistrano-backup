@@ -7,9 +7,9 @@ module Capistrano
     module Helpers
       # error helpers - output error messages
 
-      def local_config_missing
+      def local_app_config_missing
         puts
-        puts "Error - local file '#{backup_local_file}' is missing, and it is required."
+        puts "Error - local file '#{local_app_config}' is missing, and it is required."
         puts
       end
 
@@ -17,7 +17,7 @@ module Capistrano
         puts
         puts "Error - remote file #{backups_config}' is missing, and it's required."
         puts "Have you installed Backups Gem and configuration file?"
-        puts "BCS uses the backups cookbook to install and configure"
+        puts "BCS uses the backups cookbook to install and configure the backups gem."
         puts
       end
     end

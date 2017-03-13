@@ -8,14 +8,14 @@ module Capistrano
     module Paths
       # Local file structure
       #
-      # root / config / backup.rb  => backup_local_file
+      # root / config / backup.rb  => local_app_config
       #
       #
-      # backup_local_file
+      # local_app_config
       #  - backup configuration file on local project
       #  - file kept on the machine running the deployment
       #
-      def backup_local_file
+      def local_app_config
         Pathname.new('config').join fetch(:app_config)
       end
 

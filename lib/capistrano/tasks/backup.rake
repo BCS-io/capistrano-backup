@@ -37,7 +37,7 @@ namespace :backup do
   desc 'Setup `backup` folder on the server(s)'
   task setup: [:check] do
     on release_roles :all do
-      execute :mkdir, '-pv',  File.dirname(app_config)
+      execute :mkdir, '-pv', File.dirname(app_config)
 
       # symlink app model file into backup directory
       upload! backup_local_file.to_s, app_config.to_s

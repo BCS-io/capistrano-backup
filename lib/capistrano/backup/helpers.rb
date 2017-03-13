@@ -13,9 +13,11 @@ module Capistrano
         puts
       end
 
-      def check_backup_config_full_path_error
+      def backups_config_missing
         puts
-        puts "Error - remote file #{fetch(:backups_config)}' does not exist, and it's required"
+        puts "Error - remote file #{backups_config}' is missing, and it's required."
+        puts "Have you installed Backups Gem and configuration file?"
+        puts "BCS uses the backups cookbook to install and configure"
         puts
       end
     end

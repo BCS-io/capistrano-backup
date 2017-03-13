@@ -15,7 +15,7 @@ namespace :backup do
   desc 'backup folder checks'
   task :check do
     invoke 'backup:local_config_exists?'
-    invoke 'backup:check_backup_config_full_path'
+    invoke 'backup:backup_installed?'
   end
 
   task :local_config_exists? do
@@ -25,11 +25,11 @@ namespace :backup do
     exit 1
   end
 
-  task :check_backup_config_full_path do
+  task :backup_installed? do
     on release_roles :all do
       next if test("[ -f #{backups_config} ]")
 
-      check_backup_config_full_path_error
+      backups_config_missing
       exit 1
     end
   end

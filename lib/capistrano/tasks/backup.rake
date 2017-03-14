@@ -3,10 +3,11 @@ include Capistrano::Backup::Helpers
 
 namespace :load do
   task :defaults do
-    set :app_config,               -> { 'backup.rb' } # name of app config file local & remote
+    set :template_app_config,      -> { 'backup.erb' } # name of config template
+    set :app_config,               -> { 'backup.rb' }  # name of remote app config file
 
-    set :backups_root,             -> { '~/Backup' }  # backup configuration under this
-    set :backups_config,           -> { 'config.rb' } # name of backup config file
+    set :backups_root,             -> { '~/Backup' }   # backup configuration under this
+    set :backups_config,           -> { 'config.rb' }  # name of backup config file
     set :backups_model_config,     -> { "#{fetch(:application)}.rb" }
   end
 end
@@ -14,15 +15,7 @@ end
 namespace :backup do
   desc 'backup folder checks'
   task :check do
-    invoke 'backup:local_config_exists?'
     invoke 'backup:backup_installed?'
-  end
-
-  task :local_config_exists? do
-    next if File.exist?(local_app_config)
-
-    local_app_config_missing
-    exit 1
   end
 
   task :backup_installed? do
@@ -40,7 +33,7 @@ namespace :backup do
       execute :mkdir, '-pv', File.dirname(app_config)
 
       # symlink app model file into backup directory
-      upload! local_app_config.to_s, app_config.to_s
+      upload! template(template_app_config), app_config
       sudo "ln -nfs #{app_config} #{backups_model_config}"
     end
   end

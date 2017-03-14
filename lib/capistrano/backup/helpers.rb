@@ -5,6 +5,12 @@ module Capistrano
     #  - In my mind it is "Wrap ugly parts of none OO code"
     #
     module Helpers
+      def template(from)
+        template_path = File.expand_path("../templates/#{from}", __dir__)
+        template = ERB.new(File.new(template_path).read).result(binding)
+        StringIO.new(template)
+      end
+
       # error helpers - output error messages
 
       def local_app_config_missing

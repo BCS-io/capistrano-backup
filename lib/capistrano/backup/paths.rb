@@ -15,8 +15,8 @@ module Capistrano
       #  - backup configuration file on local project
       #  - file kept on the machine running the deployment
       #
-      def local_app_config
-        Pathname.new('config').join fetch(:app_config)
+      def template_app_config
+        fetch(:template_app_config)
       end
 
       # Remote file structure

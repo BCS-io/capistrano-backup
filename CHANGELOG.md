@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+### v0.1.0  2017-3-14
+- Added Feature
+  - [1e183ed14396924437fe730d78959bfce1661d22](https://github.com/BCS-io/capistrano-backup/commit/1e183ed14396924437fe730d78959bfce1661d22) Template configuration
+
+- Removed Feature
+  - uploading configuration verbatim - as I wasn't using the feature now
+
 ### v0.0.4  2015-06-30
 - Added
   - Test to see if main backup configuration is present

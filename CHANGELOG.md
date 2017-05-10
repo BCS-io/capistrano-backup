@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### v0.2.0  2017-5-10
+ - Backup Model Config name contains rails_env by default
 
 ### v0.1.0  2017-3-14
 - Added Feature

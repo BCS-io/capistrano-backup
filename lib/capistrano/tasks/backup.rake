@@ -8,7 +8,7 @@ namespace :load do
 
     set :backups_root,             -> { '~/Backup' }   # backup configuration under this
     set :backups_config,           -> { 'config.rb' }  # name of backup config file
-    set :backups_model_config,     -> { "#{fetch(:application)}.rb" }
+    set :backups_model_config,     -> { "#{fetch(:application)}_#{fetch(:rails_env, 'production')}.rb" }
   end
 end
 

@@ -31,9 +31,8 @@ namespace :backup do
   task setup: [:check] do
     on release_roles :all do
       execute :mkdir, '-pv', File.dirname(app_config)
-
       # symlink app model file into backup directory
-      upload! template(template_app_config), app_config
+      upload! eval_template(template_app_config), app_config
       sudo "ln -nfs #{app_config} #{backups_model_config}"
     end
   end
